@@ -155,7 +155,6 @@ main {
     flex-wrap: wrap;
 }
 
-
 .tag {
     background-color: hsl(180, 31%, 95%);
     color: hsl(180, 29%, 50%);
@@ -172,4 +171,44 @@ main {
     color: white;
 }
 
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
 
+    .jobs-filter{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .listing-all-jobs {
+        padding: 15px;
+    }
+
+    .listing-all-jobs .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .listing-all-jobs .details .company {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .listing-all-jobs .details .info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .jlisting-all-jobs .header img {
+        /* width: 40px;
+        height: 40px; */
+    }
+
+    .listing-all-jobs .details .position {
+        font-size: 16px;
+    }
+}
