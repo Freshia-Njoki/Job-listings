@@ -55,6 +55,7 @@ function renderAllJobs(data) {
     });
 
     manageTagClicks(data);
+    FilteredJobs();
 }
 
 function manageTagClicks(data) {
@@ -66,5 +67,29 @@ function manageTagClicks(data) {
             }
             renderAllJobs(data);
         });
+    });
+}
+
+function FilteredJobs() {
+    const filtersContainer = document.querySelector('.jobs-filter');
+    filtersContainer.innerHTML = '';
+
+    jobFilters.forEach(filter => {
+        const filterElement = document.createElement('div');
+        filterElement.classList.add('filter');
+        
+        filterElement.innerHTML = `
+            <span>${filter}</span>
+            <button class="remove">&times;</button>
+        `;
+
+        filterElement.querySelector('.remove').addEventListener('click', () => {
+            jobFilters = jobFilters.filter(f => f !== filter);
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => renderAllJobs(data));
+        });
+
+        filtersContainer.appendChild(filterElement);
     });
 }
