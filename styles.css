@@ -149,10 +149,18 @@ main {
   color: hsl(180, 8%, 52%);
 }
 
-.listing-all-jobs.tags {
+.tags {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
+  margin-left: 3rem;
+
+}
+.listing-all-jobs{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
 
 .tag {
@@ -164,7 +172,6 @@ main {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
-  /* flex-grow: 1; */
   margin: 5px;
 }
 
