@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
-            renderJobListings(data);
+            renderAllJobs(data);
+            manageTagClicks(data);
         });
 });
 
-function renderJobListings(data) {
+function renderAllJobs(data) {
     const jobListingsContainer = document.querySelector('.all-jobs');
     jobListingsContainer.innerHTML = '';
 
@@ -51,5 +52,19 @@ function renderJobListings(data) {
         `;
         
         jobListingsContainer.appendChild(jobElement);
+    });
+
+    manageTagClicks(data);
+}
+
+function manageTagClicks(data) {
+    document.querySelectorAll('.tag').forEach(tag => {
+        tag.addEventListener('click', (e) => {
+            const tagText = e.target.textContent;
+            if (!jobFilters.includes(tagText)) {
+                jobFilters.push(tagText);
+            }
+            renderAllJobs(data);
+        });
     });
 }
